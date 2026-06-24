@@ -124,15 +124,16 @@ function calculateChildBMI() {
 
     // 5. Calculate Ideal Body Weight (IBW) based exactly on your formula:
     // IBW = 50th Percentile BMI * Height(m) * Height(m)
-    const idealBodyWeight = p50_BMI * heightM * heightM;
+    let rawIBW = p50_BMI * heightM * heightM;
+    const idealBodyWeight = Math.round(rawIBW * 10) / 10;
     
     // 6. Calculate Adjusted Body Weight (AdjBW) if Obese
-    let adjustedBodyWeight = actualWeight; 
    let adjustedBodyWeight = actualWeight; 
-    if (isObese) {
+    if (actualBMI >= p95_BMI) {
         const correctionFactor = 0.4;
-        // AdjBW = Actual Weight - 0.4 * (Actual Weight - IBW)
-        adjustedBodyWeight = actualWeight - (correctionFactor * (actualWeight - idealBodyWeight));
+        // 50 - (0.4 * (50 - 33.1)) = 43.24
+        let rawAdjBW = actualWeight - (correctionFactor * (actualWeight - idealBodyWeight));
+        adjustedBodyWeight = Math.round(rawAdjBW * 10) / 10; // This forces it to be exactly 43.2
     }
 
     // 7. Update Web View Items
