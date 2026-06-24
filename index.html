@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric BMI & Weight Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Pediatric BMI & Weight Calculator</h2>
+        <p class="subtitle">Clinical tool for Ideal & Adjusted Body Weight</p>
+        <hr>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Boy</option>
+                <option value="female">Girl</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age (Years):</label>
+            <input type="number" id="age" placeholder="e.g., 10" step="0.5" min="2" max="20">
+        </div>
+
+        <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="e.g., 140" step="0.1">
+        </div>
+
+        <div class="form-group">
+            <label for="weight">Actual Weight (kg):</label>
+            <input type="number" id="weight" placeholder="e.g., 50" step="0.1">
+        </div>
+
+        <button onclick="calculateChildBMI()">Calculate Weights</button>
+
+        <div id="results" class="results-box" style="display: none;">
+            <h3>Results</h3>
+            <p><strong>Actual BMI:</strong> <span id="resBMI"></span> kg/m²</p>
+            <p><strong>Status:</strong> <span id="resStatus"></span></p>
+            <p class="highlight"><strong>Ideal Body Weight (IBW):</strong> <span id="resIBW"></span> kg</p>
+            <p class="highlight adj-weight"><strong>Adjusted Body Weight (AdjBW):</strong> <span id="resAdjBW"></span> kg</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
