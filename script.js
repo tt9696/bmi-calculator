@@ -128,10 +128,11 @@ function calculateChildBMI() {
     
     // 6. Calculate Adjusted Body Weight (AdjBW) if Obese
     let adjustedBodyWeight = actualWeight; 
+   let adjustedBodyWeight = actualWeight; 
     if (isObese) {
         const correctionFactor = 0.4;
-        // Formula matching your manual example: IBW + 0.4 * (Actual - IBW)
-        adjustedBodyWeight = idealBodyWeight + (correctionFactor * (actualWeight - idealBodyWeight));
+        // AdjBW = Actual Weight - 0.4 * (Actual Weight - IBW)
+        adjustedBodyWeight = actualWeight - (correctionFactor * (actualWeight - idealBodyWeight));
     }
 
     // 7. Update Web View Items
