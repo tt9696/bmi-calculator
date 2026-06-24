@@ -18,7 +18,7 @@ const cdcBmiData = {
         "8.5": { "p50": 15.9, "p95": 21.0 },
         "9":   { "p50": 16.1, "p95": 21.6 },
         "9.5": { "p50": 16.4, "p95": 22.3 },
-        "10":  { "p50": 16.7, "p95": 23.0 }, // Your 10-year-old baseline
+        "10":  { "p50": 16.7, "p95": 23.0 }, // 10-year-old baseline
         "10.5":{ "p50": 17.0, "p95": 23.7 },
         "11":  { "p50": 17.3, "p95": 24.3 },
         "11.5":{ "p50": 17.6, "p95": 25.0 },
@@ -99,7 +99,6 @@ function calculateChildBMI() {
     const actualBMI = actualWeight / (heightM * heightM);
     
     // 3. Find closest data mapping in our CDC array
-    // This looks for an exact match or drops down to the nearest half-year marker
     const ageLookupKey = String(Math.floor(ageYears * 2) / 2); 
     
     let p50_BMI;
@@ -122,26 +121,25 @@ function calculateChildBMI() {
         isObese = true;
     }
 
-    // 5. Calculate Ideal Body Weight (IBW) based exactly on your formula:
-    // IBW = 50th Percentile BMI * Height(m) * Height(m)
+    // 5. Calculate Ideal Body Weight (IBW) and round to match manual decimal steps
     let rawIBW = p50_BMI * heightM * heightM;
     const idealBodyWeight = Math.round(rawIBW * 10) / 10;
     
-    // 6. Calculate Adjusted Body Weight (AdjBW) if Obese
-   let adjustedBodyWeight = actualWeight; 
-    if (actualBMI >= p95_BMI) {
+    // 6. Calculate Adjusted Body Weight (AdjBW) using your custom structural formula
+    let adjustedBodyWeight = actualWeight; 
+    if (isObese) {
         const correctionFactor = 0.4;
-        // 50 - (0.4 * (50 - 33.1)) = 43.24
+        // Formula structure: Actual Weight - 0.4 * (Actual Weight - IBW)
         let rawAdjBW = actualWeight - (correctionFactor * (actualWeight - idealBodyWeight));
-        adjustedBodyWeight = Math.round(rawAdjBW * 10) / 10; // This forces it to be exactly 43.2
+        adjustedBodyWeight = Math.round(rawAdjBW * 10) / 10;
     }
 
-    // 7. Update Web View Items
+    // 7. Update View Interface Elements
     document.getElementById("resBMI").innerText = actualBMI.toFixed(1);
     document.getElementById("resStatus").innerText = status;
     document.getElementById("resIBW").innerText = idealBodyWeight.toFixed(1);
     
-    // Visual display handling for Adjusted Weight
+    // Visual show/hide panel logic for Adjusted Weight
     if (isObese) {
         document.getElementById("resAdjBW").innerText = adjustedBodyWeight.toFixed(1);
         document.getElementById("adjWeightRow").style.display = "block";
@@ -149,6 +147,6 @@ function calculateChildBMI() {
         document.getElementById("adjWeightRow").style.display = "none";
     }
     
-    // Open results card
+    // Open results card window block
     document.getElementById("results").style.display = "block";
 }
