@@ -1,3 +1,5 @@
+//the graph calculation -https://www.cdc.gov/growthcharts/data/set1clinical/cj41c023.pdf and https://www.cdc.gov/growthcharts/data/set1clinical/cj41c024.pdf
+
 const cdcBmiData = {
     "male": {
         "2":   { "p50": 16.6, "p95": 19.3 },
