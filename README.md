@@ -16,10 +16,20 @@ Access the live web application immediately from any smartphone, tablet, or desk
 
 ## 📊 Core Calculation & Logic Flow
 
-The application processes user inputs sequentially using specific mathematical rounding standards to eliminate floating-point calculation anomalies native to modern web browsers:
+### 📥 Required Inputs
+To initiate the clinical assessment engine, the following user inputs are required:
+* **Weight:** Measured in kilograms (**kg**).
+* **Height:** Measured in centimeters (**cm**) *(internally converted to meters ($m$) for BMI computation)*.
+* **Age:** Measured in years (**years old**), spanning a strict boundary of 2 to 20 years.
+* **Biological Sex:** Selected as Male or Female (to map against sex-specific CDC growth curves).
+
+---
+
+### 🧮 Mathematical Pipeline
+The application processes these inputs sequentially using specific mathematical rounding standards to eliminate floating-point calculation anomalies native to modern web browsers:
 
 1. **Actual BMI Calculation:**
-   $$\text{Actual BMI} = \frac{\text{Actual Weight (kg)}}{\text{Height (m)}^2}$$
+   $$\text{Actual BMI} = \frac{\text{Actual Weight (kg)}}{\left(\frac{\text{Height (cm)}}{100}\right)^2}$$
 
 2. **CDC Data Matrix Lookup:**
    The app converts the inputted age to the nearest half-year interval step to cross-reference against the official **CDC Growth Chart Matrix** to find the target $50^{\text{th}}$ and $95^{\text{th}}$ percentile values.
@@ -29,12 +39,11 @@ The application processes user inputs sequentially using specific mathematical r
 
 4. **Ideal Body Weight (IBW):**
    Determined by mapping the median $50^{\text{th}}$ percentile target BMI against the squared height:
-   $$\text{IBW (kg)} = 50^{\text{th}}\text{ Percentile BMI} \times \text{Height (m)}^2$$
+   $$\text{IBW (kg)} = 50^{\text{th}}\text{ Percentile BMI} \times \left(\frac{\text{Height (cm)}}{100}\right)^2$$
 
 5. **Adjusted Body Weight (AdjBW):**
    If the user triggers the obesity threshold flag, the tool applies a custom $0.4$ clearance correction factor:
    $$\text{AdjBW (kg)} = \text{Actual Weight} - 0.4 \times (\text{Actual Weight} - \text{IBW})$$
-
 ---
 
 ## 🛠️ Features & Safety Parameters
