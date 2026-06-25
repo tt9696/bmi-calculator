@@ -51,7 +51,8 @@ The directory layout of this repository is lightweight and direct:
 ├── style.css    # Clean, modern UI visual layouts & responsive layout configurations
 └── script.js    # CDC core data engine array and formula calculation functions
 
-## References
+---
+**## References**
 
 The calculation benchmarks and data maps embedded within this application are extracted directly from the official **CDC BMI-for-Age Percentile Growth Charts**. You can access the clinical visual data sheets here:
 
