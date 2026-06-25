@@ -34,8 +34,9 @@ The application processes these inputs sequentially using specific mathematical 
 2. **CDC Data Matrix Lookup:**
    The app converts the inputted age to the nearest half-year interval step to cross-reference against the official **CDC Growth Chart Matrix** to find the target $50^{\text{th}}$ and $95^{\text{th}}$ percentile values.
 
+
 3. **Obesity Verification:**
-   $$\text{Status} = \begin{cases} \text{Obese}, & \text{if } \text{Actual BMI} \ge 95^{\text{th}}\text{ Percentile} \\\\ \text{Non-Obese}, & \text{otherwise} \end{cases}$$
+   If $\text{Actual BMI} \ge 95^{\text{th}}\text{ Percentile}$, the child is flagged as **Obese**. Otherwise, the child is flagged as **Non-Obese**.
    
 4. **Ideal Body Weight (IBW):**
    Determined by mapping the median $50^{\text{th}}$ percentile target BMI against the squared height:
