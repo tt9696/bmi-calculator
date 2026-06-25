@@ -8,7 +8,7 @@ When a child's BMI maps onto or above the $95^{\text{th}}$ percentile curve line
 
 ## 🚀 Live Demo
 Access the live web application immediately from any smartphone, tablet, or desktop browser here:
-👉 **[https://tt9696.github.io/bmi-calculator-children/]**
+👉 **[https://tt9696.github.io/bmi-calculator-children/](https://tt9696.github.io/bmi-calculator-children/)**
 
 ---
 
@@ -42,21 +42,22 @@ The application processes user inputs sequentially using specific mathematical r
 * **100% Free & Fast:** Operates strictly on client-side vanilla architecture (HTML5, CSS3, and modern block-scoped JavaScript) requiring zero external software installations, tracking bugs, or server costs.
 
 ---
+📜 References
+The calculation benchmarks and data maps embedded within this application are extracted directly from the official CDC BMI-for-Age Percentile Growth Charts. You can access the clinical visual data sheets here:
+
+Boys BMI-for-Age Growth Curve Chart: CDC Chart cj41c023 (PDF)
+
+Girls BMI-for-Age Growth Curve Chart: CDC Chart cj41c024 (PDF)
+
+Note: Data tables are restricted to pediatric monitoring benchmarks spanning exactly 2 to 20 years old. Values outside this range are clinically omitted from this tracking tool.
+---
 
 ## 📁 Project Architecture
 
 The directory layout of this repository is lightweight and direct:
+
 ```text
-├── index.html   # Main structural framework layout & DOM endpoints
-├── style.css    # Clean, modern UI visual layouts & responsive layout configurations
+├── index.html   # Main HTML structural layout & DOM endpoints
+├── style.css    # Clean UI visual styling & responsive layout configurations
 └── script.js    # CDC core data engine array and formula calculation functions
 
----
-**## References**
-
-The calculation benchmarks and data maps embedded within this application are extracted directly from the official **CDC BMI-for-Age Percentile Growth Charts**. You can access the clinical visual data sheets here:
-
-* **Boys BMI-for-Age Growth Curve Chart:** [CDC Chart cj41c023 (PDF)](https://www.cdc.gov/growthcharts/data/set1clinical/cj41c023.pdf)
-* **Girls BMI-for-Age Growth Curve Chart:** [CDC Chart cj41c024 (PDF)](https://www.cdc.gov/growthcharts/data/set1clinical/cj41c024.pdf)
-
-*Note: Data tables are restricted to pediatric monitoring benchmarks spanning **exactly 2 to 20 years old**. Values outside this range are clinically omitted from this tracking tool.*
