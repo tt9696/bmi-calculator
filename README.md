@@ -37,11 +37,11 @@ The application processes these inputs sequentially using specific mathematical 
 3. **Obesity Verification:**
    $$\text{Status} = \begin{cases} \text{Obese}, & \text{if } \text{Actual BMI} \ge 95^{\text{th}}\text{ Percentile} \\\\ \text{Non-Obese}, & \text{otherwise} \end{cases}$$
    
-5. **Ideal Body Weight (IBW):**
+4. **Ideal Body Weight (IBW):**
    Determined by mapping the median $50^{\text{th}}$ percentile target BMI against the squared height:
    $$\text{IBW (kg)} = 50^{\text{th}}\text{ Percentile BMI} \times \left(\frac{\text{Height (cm)}}{100}\right)^2$$
 
-6. **Adjusted Body Weight (AdjBW):**
+5. **Adjusted Body Weight (AdjBW):**
    If the user triggers the obesity threshold flag, the tool applies a custom $0.4$ clearance correction factor:
    $$\text{AdjBW (kg)} = \text{Actual Weight} - 0.4 \times (\text{Actual Weight} - \text{IBW})$$
 ---
